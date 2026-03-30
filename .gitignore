@@ -1,0 +1,29 @@
+# Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Build output directories
+bin/
+build/
+dist/
+
+# Coverage files
+coverage.out
+coverage.html
+*.coverprofile
+
+# Go test cache / local temp
+.gocache/
+tmp/
+
+# Editor and OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
