@@ -111,6 +111,7 @@ MiniLMCache 应始终围绕下面这条主链路组织：
 - `lookup/`：LOOKUP 的核心类型、chunking、keying、service、trace
 - `lookup/memory/`：内存版 metadata controller 与 reservation stub
 - `cmd/minilmcache-lookup-demo/`：CLI demo
+- `skills/minilmcache-code/`：仓库内版本化的 MiniLMCache 专用 Codex skill 副本
 
 当前实现边界：
 

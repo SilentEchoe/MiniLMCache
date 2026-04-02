@@ -1,0 +1,4 @@
+interface:
+  display_name: "MiniLMCache Code"
+  short_description: "Supporting MiniLMCache development"
+  default_prompt: "Use $minilmcache-code to implement or review MiniLMCache work while preserving its teaching-first design."
