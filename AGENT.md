@@ -105,6 +105,19 @@ MiniLMCache 应始终围绕下面这条主链路组织：
 
 ## 当前仓库状态
 
-截至当前，仓库根目录仅包含 `README.md`，尚未看到实际 Go 代码实现。
+当前仓库已经包含 LOOKUP v1 的 Go 基础实现：
 
-因此后续 agent 在动手实现时，应把“建立最小可运行骨架”作为第一优先级，而不是默认项目已经具备完整模块。
+- `go.mod`
+- `lookup/`：LOOKUP 的核心类型、chunking、keying、service、trace
+- `lookup/memory/`：内存版 metadata controller 与 reservation stub
+- `cmd/minilmcache-lookup-demo/`：CLI demo
+
+当前实现边界：
+
+- 只实现 LOOKUP 的 metadata-plane 判定
+- 输入只接受 token IDs
+- 只复用从第 0 个 chunk 开始的最长连续命中前缀
+- 尾部不足一个 chunk 的 token 不参与 lookup，而是进入 missing range
+- reservation 仅为后续 RETRIEVE 对接预留最小骨架
+
+因此后续 agent 在继续扩展时，应优先围绕 LOOKUP -> RETRIEVE -> STORE 的顺序推进，而不是跳到真实 tensor、GPU 或生产级分布式细节。

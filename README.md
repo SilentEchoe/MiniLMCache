@@ -71,6 +71,48 @@ That separation is one of the most important design points.
 
 ---
 
+## Current implementation status
+
+The repository now includes a first LOOKUP implementation in Go.
+
+- `lookup/`: core LOOKUP types, chunking, deterministic keying, service logic, and trace events
+- `lookup/memory/`: in-memory metadata controller and reservation stub
+- `cmd/minilmcache-lookup-demo/`: CLI demo for `hit`, `partial_hit`, and `miss`
+
+Current LOOKUP v1 behavior:
+
+- Input is token IDs only
+- Only full chunks participate in lookup
+- Lookup returns the longest reusable prefix only
+- Any chunk stored in a non-`local` location sets `NeedRetrieve=true`
+- Reservation is modeled as a minimal observable stub for future retrieve work
+
+This stage intentionally does **not** implement real KV bytes, GPU integration, retrieve, or store.
+
+---
+
+## Quick start
+
+Run the demo:
+
+```bash
+go run ./cmd/minilmcache-lookup-demo
+```
+
+Read the teaching guide:
+
+```text
+docs/lookup-demo.md
+```
+
+Run the tests:
+
+```bash
+go test ./...
+```
+
+---
+
 ## Architecture
 
 ```text

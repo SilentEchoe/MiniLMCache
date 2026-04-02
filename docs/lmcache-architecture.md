@@ -227,6 +227,7 @@ LMCache 文档多处以 `256 tokens` 作为默认 chunk 粒度。对应地，系
 - 存储层可以独立做压缩、上传、淘汰、预取
 - 命中路径和写入路径可以分离优化
 
+
 ### 4.5 Remote Connectors / Storage Backends
 
 LMCache 的存储层不是单一后端，而是可组合的后端体系。
